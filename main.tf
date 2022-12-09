@@ -18,7 +18,7 @@ provider "google" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
+  name = "${var.network_name}"
 }
 
 resource "google_compute_instance" "vm_instance" {
@@ -27,7 +27,7 @@ resource "google_compute_instance" "vm_instance" {
   tags = [ "prod" ]
 
   labels = {
-    centro_custo = "rh"
+    centro_custo = "${var.centro_custo_rh}"
   }
 
   boot_disk {
